@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:for_x/navigation/profile.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -15,22 +16,46 @@ class GoogleSignInSuccess extends StatefulWidget {
 }
 
 class _GoogleSignInSuccessState extends State<GoogleSignInSuccess> {
+  int currentIdx = 0;
+
+
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    final screens = [
+      Center(
+        child: Text(
+          'Watchlist',
+          style: GoogleFonts.poppins(color: Colors.black, fontSize: 32),
+        ),
+      ),
+      Center(
+        child: Text(
+          'Orders',
+          style: GoogleFonts.poppins(color: Colors.black, fontSize: 32),
+        ),
+      ),
+      Center(
+        child: Text(
+          'Portfolio',
+          style: GoogleFonts.poppins(color: Colors.black, fontSize: 32),
+        ),
+      ),
 
+      Profile(widget.googleSignIn , widget.snapshot)
+
+    ];
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          TextButton.icon(
-            onPressed: () async {
-              await widget.googleSignIn.signOut();
-              await FirebaseAuth.instance.signOut();
-            },
-            icon: FaIcon(FontAwesomeIcons.person),
-            label: Text('Logout'),
-          )
-        ],
+        // actions: [
+        //   TextButton.icon(
+        //     onPressed: () async {
+        //       await widget.googleSignIn.signOut();
+        //       await FirebaseAuth.instance.signOut();
+        //     },
+        //     icon: FaIcon(FontAwesomeIcons.person),
+        //     label: Text('Logout'),
+        //   )
+        // ],
         backgroundColor: Colors.green,
         centerTitle: true,
         title: Text(
@@ -42,59 +67,35 @@ class _GoogleSignInSuccessState extends State<GoogleSignInSuccess> {
           ),
         ),
       ),
-      body: Stack(
-        children: [
-          Positioned(
-            left: size.width * .4,
-            height: 100,
-            width: 100,
-            top: 30,
-            child: Center(
-              child: CircleAvatar(
-                minRadius: 30,
-                backgroundImage:
-                    NetworkImage(widget.snapshot.data!.photoURL.toString()),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 200,
-            left: size.width * .1,
-            right: size.width * .1,
-            child: Container(
-              child: Text(
-                widget.snapshot.data!.displayName +
-                    ' you have signed in successfully :)',
-                style: GoogleFonts.poppins(
-                    color: Colors.black,
-                    fontSize: 28,
-                    fontStyle: FontStyle.italic),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ),
-        ],
-      ),
+      body: screens[currentIdx],
       bottomNavigationBar: BottomNavigationBar(
-        iconSize: 25,
+        iconSize: 28,
+        selectedFontSize: 17,
+        unselectedFontSize: 14,
+        currentIndex: currentIdx,
+        onTap: (index) => setState(() => currentIdx = index),
+        type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.black,
-        items: [
-          const BottomNavigationBarItem(
-            backgroundColor: Colors.black,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.white,
+        items: const [
+          BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.bookmark),
             label: 'Watchlist',
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.book),
             label: 'Orders',
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
+            backgroundColor: Colors.white,
             icon: FaIcon(FontAwesomeIcons.briefcase),
             label: 'Portfolio',
           ),
           BottomNavigationBarItem(
-              icon: const FaIcon(FontAwesomeIcons.powerOff),
-              label: widget.snapshot.data.displayName.toString()),
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
         ],
       ),
     );
