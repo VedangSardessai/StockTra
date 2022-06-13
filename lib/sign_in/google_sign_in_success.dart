@@ -1,7 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:for_x/navigation/profile.dart';
+import 'package:for_x/sign_in/orders.dart';
+import 'package:for_x/sign_in/portfolio.dart';
+import 'package:for_x/sign_in/watchlist.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -18,44 +20,16 @@ class GoogleSignInSuccess extends StatefulWidget {
 class _GoogleSignInSuccessState extends State<GoogleSignInSuccess> {
   int currentIdx = 0;
 
-
   @override
   Widget build(BuildContext context) {
     final screens = [
-      Center(
-        child: Text(
-          'Watchlist',
-          style: GoogleFonts.poppins(color: Colors.black, fontSize: 32),
-        ),
-      ),
-      Center(
-        child: Text(
-          'Orders',
-          style: GoogleFonts.poppins(color: Colors.black, fontSize: 32),
-        ),
-      ),
-      Center(
-        child: Text(
-          'Portfolio',
-          style: GoogleFonts.poppins(color: Colors.black, fontSize: 32),
-        ),
-      ),
-
-      Profile(widget.googleSignIn , widget.snapshot)
-
+      Watchlist(),
+      Orders(),
+      Portfolio(),
+      Profile(widget.googleSignIn, widget.snapshot)
     ];
     return Scaffold(
       appBar: AppBar(
-        // actions: [
-        //   TextButton.icon(
-        //     onPressed: () async {
-        //       await widget.googleSignIn.signOut();
-        //       await FirebaseAuth.instance.signOut();
-        //     },
-        //     icon: FaIcon(FontAwesomeIcons.person),
-        //     label: Text('Logout'),
-        //   )
-        // ],
         backgroundColor: Colors.green,
         centerTitle: true,
         title: Text(
