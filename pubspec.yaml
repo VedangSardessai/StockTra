@@ -39,6 +39,14 @@ dependencies:
   firebase_auth: ^3.3.19
   firebase_core: ^1.17.1
   font_awesome_flutter: ^10.1.0
+  flutter_bloc: ^8.0.1
+  equatable: ^2.0.3
+  intl: ^0.17.0
+  syncfusion_flutter_charts: ^20.1.59
+  yahoofin: ^0.0.3
+  http: ^0.13.4
+
+
 
 dev_dependencies:
   flutter_test:

@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:for_x/sign_in/google_sign_in_success.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import 'models/sign_in/google_sign_in_success.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,12 +40,12 @@ class MyApp extends StatelessWidget {
                   backgroundColor: Colors.green,
                   centerTitle: true,
                   title: Text(
-                    'FOR-X',
+                    'STOCKTRA',
                     style: GoogleFonts.poppins(
                         color: Colors.white,
-                        fontSize: 35,
+                        fontSize: 30,
                         letterSpacing: 10,
-                        fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
                 body: Center(
