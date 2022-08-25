@@ -27,13 +27,6 @@ class MyApp extends StatelessWidget {
             if (snapshot.hasData) {
               return GoogleSignInSuccess(snapshot, googleSignIn);
             }
-
-            // else if(snapshot.connectionState == ConnectionState.waiting){
-            //   return Center(
-            //     child: CircularProgressIndicator(),
-            //   );
-            //
-            // }
              else {
               return Scaffold(
                 appBar: AppBar(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:for_x/models/navigation/profile.dart';
-import 'package:for_x/models/sign_in/portfolio.dart';
-import 'package:for_x/models/sign_in/watchlist.dart';
-import 'package:for_x/models/sign_in/orders.dart';
+import 'package:for_x/models/stocks/portfolio.dart';
+import 'package:for_x/models/stocks/watchlist.dart';
+import 'package:for_x/models/stocks/orders.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -24,8 +24,8 @@ class _GoogleSignInSuccessState extends State<GoogleSignInSuccess> {
   Widget build(BuildContext context) {
     final screens = [
       Watchlist(),
-      Orders(),
-      Portfolio(),
+      // Orders(),
+      // Portfolio(),
       Profile(widget.googleSignIn, widget.snapshot)
     ];
     return Scaffold(
@@ -45,15 +45,15 @@ class _GoogleSignInSuccessState extends State<GoogleSignInSuccess> {
             icon: FaIcon(FontAwesomeIcons.bookmark),
             label: 'Watchlist',
           ),
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.book),
-            label: 'Orders',
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Colors.white,
-            icon: FaIcon(FontAwesomeIcons.briefcase),
-            label: 'Portfolio',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: FaIcon(FontAwesomeIcons.book),
+          //   label: 'Orders',
+          // ),
+          // BottomNavigationBarItem(
+          //   backgroundColor: Colors.white,
+          //   icon: FaIcon(FontAwesomeIcons.briefcase),
+          //   label: 'Portfolio',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',
