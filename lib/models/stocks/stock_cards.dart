@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 class StockCard extends StatelessWidget {
   String symbol;
-  double open, high, low, close;
+  String open, high, low, close;
 
   static final DateTime today = DateTime.now();
   static final DateFormat format = DateFormat('MMM dd');
@@ -102,7 +102,7 @@ class StockCard extends StatelessWidget {
                           style: GoogleFonts.poppins(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
-                            color: close > open ? Colors.green : Colors.red,
+                            color: double.parse(close) > double.parse(open) ? Colors.green : Colors.red,
                           ),
                         ),
                       ],

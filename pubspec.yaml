@@ -45,10 +45,7 @@ dependencies:
   syncfusion_flutter_charts: ^20.1.59
   yahoofin: ^0.0.3
   http: ^0.13.0
-  alpha_vantage_package:
-    git:
-      url: https://github.com/olexale/alpha_vantage_package
-
+  easy_refresh: ^3.0.4+2
 
 
 dev_dependencies:
