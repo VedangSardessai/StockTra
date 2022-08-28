@@ -2,7 +2,9 @@ import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:yahoofin/yahoofin.dart';
+
 import 'stock_cards.dart';
 
 class Watchlist extends StatefulWidget {
@@ -13,7 +15,6 @@ class Watchlist extends StatefulWidget {
 }
 
 class _WatchlistState extends State<Watchlist> {
-
   static final DateFormat format = DateFormat('MMM dd');
   final String formatted = StockCard.format.format(StockCard.today);
   List<String> stockNames = [
@@ -69,12 +70,15 @@ class _WatchlistState extends State<Watchlist> {
     'WIPRO.NS',
   ];
 
-  List<String> open = [],
-      high = [],
-      low = [],
-      close = [];
+  List<String> open = [], high = [], low = [], close = [];
+  List<String> finalOpen = [], finalHigh = [], finalLow = [], finalClose = [];
+  int i = 0;
 
-  void stocksAPI() async {
+  Future<void> stocksAPI() async {
+    open.clear();
+    high.clear();
+    low.clear();
+    close.clear();
     for (int i = 0; i < 50; i++) {
       var yfin = YahooFin();
       StockHistory hist = yfin.initStockHistory(ticker: stockNames[i]);
@@ -82,26 +86,24 @@ class _WatchlistState extends State<Watchlist> {
           stockHistory: hist,
           interval: StockInterval.oneDay,
           period: StockRange.oneDay);
-      // print(stockNames[i] +
-      //     ' O: ' +
-      //     chart.chartQuotes!.open.toString() +
-      //     'H: ' +
-      //     chart.chartQuotes!.high.toString() +
-      //     'L: ' +
-      //     chart.chartQuotes!.low.toString() +
-      //     'C: ' +
-      //     chart.chartQuotes!.close.toString());
 
       String unformattedOpen = chart.chartQuotes!.open.toString(),
           unformattedHigh = chart.chartQuotes!.high.toString(),
           unformattedLow = chart.chartQuotes!.low.toString(),
           unformattedClose = chart.chartQuotes!.close.toString();
 
-      open.add(unformattedOpen.substring(1, unformattedOpen.indexOf('.')+2));
-      high.add(unformattedHigh.substring(1, unformattedHigh.indexOf('.')+2));
-      low.add(unformattedLow.substring(1, unformattedLow.indexOf('.')+2));
-      close.add(unformattedClose.substring(1, unformattedClose.indexOf('.')+2));
+      open.add(unformattedOpen.substring(1, unformattedOpen.indexOf('.') + 2));
+      high.add(unformattedHigh.substring(1, unformattedHigh.indexOf('.') + 2));
+      low.add(unformattedLow.substring(1, unformattedLow.indexOf('.') + 2));
+      close.add(
+          unformattedClose.substring(1, unformattedClose.indexOf('.') + 2));
     }
+    print(open);
+
+    setState(() {
+      i = 1;
+      print('Set State Done');
+    });
   }
 
   @override
@@ -121,48 +123,51 @@ class _WatchlistState extends State<Watchlist> {
         ),
       ),
       body: Container(
-          color: Colors.grey[900],
-          width: double.infinity,
-          height: double.infinity,
-          child: EasyRefresh(
+        color: Colors.grey[900],
+        width: double.infinity,
+        height: double.infinity,
+        child: LiquidPullToRefresh(
+            color: Colors.black,
+
             onRefresh: stocksAPI,
-            child: ListView.builder(
-              // shrinkWrap: true,
-              itemBuilder: (BuildContext context, int index) {
-                return
-                  StockCard(
-                      symbol: stockNames[index].substring(
-                          0, stockNames[index].length - 3),
-                      open: open[index],
-                      high: high[index],
-                      low: low[index],
-                      close: close[index]);
-              }, itemCount: open.length,)
-            ,
-          )
+            child: i == 1
+                ? ListView.builder(
+                    itemBuilder: (BuildContext context, int index) {
+                      return StockCard(
+                          symbol: stockNames[index]
+                              .substring(0, stockNames[index].length - 3),
+                          open: open[index],
+                          high: high[index],
+                          low: low[index],
+                          close: close[index]);
+                    },
+                    itemCount: 50,
+                  )
+                : ListView(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(20),
+                        child: Text(
+                          'Pull Down to load stocks',
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontSize: 32,
+                          ),
+                        ),
+                      )
+                    ],
+                  )
 
-
-        // ListView(
-        //   scrollDirection: Axis.vertical,
-        //   children: [
-        //     Padding(
-        //       padding: const EdgeInsets.all(8.0),
-        //       child: Text(
-        //         formatted.toUpperCase(),
-        //         style: GoogleFonts.poppins(
-        //           color: Colors.grey[300],
-        //           fontSize: 23,
-        //           fontWeight: FontWeight.bold,
-        //         ),
-        //       ),
-        //     ),
-
-        //     ElevatedButton(
-        //       onPressed: stocksAPI,
-        //       child: Text('Click'),
-        //     )
-        //   ],
-        //   )
+            // ElevatedButton(
+            //   child: Text(i.toString()),
+            //   onPressed: () {
+            //     // setStocks();
+            //     // if(flag == 1)
+            //     //   print(open);
+            //     stocksAPI();
+            //   },
+            // )
+            ),
       ),
     );
   }

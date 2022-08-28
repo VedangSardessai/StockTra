@@ -30,12 +30,12 @@ class StockCard extends StatelessWidget {
             BoxShadow(
                 color: Colors.black,
                 offset: Offset(4, 4),
-                blurRadius: 15,
+                blurRadius: 22,
                 spreadRadius: 1),
             BoxShadow(
                 color: Colors.black,
                 offset: Offset(-4, -4),
-                blurRadius: 15,
+                blurRadius: 22,
                 spreadRadius: 1),
           ],
         ),
@@ -52,7 +52,8 @@ class StockCard extends StatelessWidget {
                       child: Text(
                         symbol,
                         style: GoogleFonts.poppins(
-                          fontSize: 23,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
                       ),
@@ -71,15 +72,15 @@ class StockCard extends StatelessWidget {
                     text: TextSpan(
                         text: "O: " + open.toString() + "  ",
                         style: GoogleFonts.poppins(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 23,
+                            // fontWeight: FontWeight.bold,
                             color: Colors.white),
                         children: [
                           TextSpan(
                             text: 'H: ' + high.toString() + '  ',
                             style: GoogleFonts.poppins(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 23,
+                              // fontWeight: FontWeight.bold,
                               color: Colors.green,
                             ),
                           ),
@@ -92,16 +93,16 @@ class StockCard extends StatelessWidget {
                     text: TextSpan(
                       text: "L: " + low.toString() + "  ",
                       style: GoogleFonts.poppins(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 23,
+                        // fontWeight: FontWeight.bold,
                         color: Colors.red,
                       ),
                       children: [
                         TextSpan(
                           text: 'C: ' + close.toString() + "  ",
                           style: GoogleFonts.poppins(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 23,
+                            // fontWeight: FontWeight.bold,
                             color: double.parse(close) > double.parse(open) ? Colors.green : Colors.red,
                           ),
                         ),
