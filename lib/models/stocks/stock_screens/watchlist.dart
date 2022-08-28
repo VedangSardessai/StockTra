@@ -1,11 +1,10 @@
-import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:yahoofin/yahoofin.dart';
 
-import 'stock_cards.dart';
+import '../stock_cards.dart';
 
 class Watchlist extends StatefulWidget {
   const Watchlist({Key? key}) : super(key: key);
@@ -127,8 +126,8 @@ class _WatchlistState extends State<Watchlist> {
         width: double.infinity,
         height: double.infinity,
         child: LiquidPullToRefresh(
-            color: Colors.black,
-
+            color: Colors.grey[800],
+            height: 80,
             onRefresh: stocksAPI,
             child: i == 1
                 ? ListView.builder(
@@ -145,15 +144,19 @@ class _WatchlistState extends State<Watchlist> {
                   )
                 : ListView(
                     children: [
-                      Container(
-                        padding: EdgeInsets.all(20),
-                        child: Text(
-                          'Pull Down to load stocks',
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontSize: 32,
+                      Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(20),
+                            child: Text(
+                              'Pull Down to load stocks',
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontSize: 32,
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       )
                     ],
                   )

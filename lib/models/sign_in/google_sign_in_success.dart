@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:for_x/models/navigation/profile.dart';
-import 'package:for_x/models/stocks/portfolio.dart';
-import 'package:for_x/models/stocks/watchlist.dart';
-import 'package:for_x/models/stocks/orders.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:for_x/models/stocks/stock_screens/news_screens/newsScreen.dart';
+import 'package:for_x/models/stocks/stock_screens/watchlist.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleSignInSuccess extends StatefulWidget {
@@ -26,6 +24,7 @@ class _GoogleSignInSuccessState extends State<GoogleSignInSuccess> {
       Watchlist(),
       // Orders(),
       // Portfolio(),
+      NewsCreen(),
       Profile(widget.googleSignIn, widget.snapshot)
     ];
     return Scaffold(
@@ -54,6 +53,10 @@ class _GoogleSignInSuccessState extends State<GoogleSignInSuccess> {
           //   icon: FaIcon(FontAwesomeIcons.briefcase),
           //   label: 'Portfolio',
           // ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.newspaper),
+            label: 'News',
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',

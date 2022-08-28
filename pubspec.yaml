@@ -45,8 +45,8 @@ dependencies:
   syncfusion_flutter_charts: ^20.1.59
   yahoofin: ^0.0.3
   http: ^0.13.0
-  easy_refresh: ^3.0.4+2
   liquid_pull_to_refresh: ^3.0.1
+  news_api_flutter_package: ^1.1.0
 
 
 dev_dependencies:
