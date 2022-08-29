@@ -99,10 +99,12 @@ class _WatchlistState extends State<Watchlist> {
     }
     print(open);
 
-    setState(() {
-      i = 1;
-      print('Set State Done');
-    });
+    setState(
+      () {
+        i = 1;
+        print('Set State Done');
+      },
+    );
   }
 
   @override
@@ -145,9 +147,9 @@ class _WatchlistState extends State<Watchlist> {
                 : ListView(
                     children: [
                       Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            padding: EdgeInsets.all(20),
+                          Center(
                             child: Text(
                               'Pull Down to load stocks',
                               style: GoogleFonts.poppins(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:for_x/models/navigation/profile.dart';
-import 'package:for_x/models/stocks/stock_screens/news_screens/newsScreen.dart';
+import 'package:for_x/models/news_models/newsScreen.dart';
 import 'package:for_x/models/stocks/stock_screens/watchlist.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -55,7 +55,7 @@ class _GoogleSignInSuccessState extends State<GoogleSignInSuccess> {
           // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.newspaper),
-            label: 'News',
+            label: 'Wall Street Journal',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
