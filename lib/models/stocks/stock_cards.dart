@@ -18,8 +18,8 @@ class StockCard extends StatelessWidget {
       required this.close});
 
   Widget build(BuildContext context) {
-    return
-      Padding(
+    Size size = MediaQuery.of(context).size;
+    return Padding(
       padding: const EdgeInsets.all(10),
       child: Container(
         height: 100,
@@ -52,7 +52,7 @@ class StockCard extends StatelessWidget {
                       child: Text(
                         symbol,
                         style: GoogleFonts.poppins(
-                          fontSize: 25,
+                          fontSize: size.width * .045,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
@@ -72,15 +72,13 @@ class StockCard extends StatelessWidget {
                     text: TextSpan(
                         text: "O: " + open.toString() + "  ",
                         style: GoogleFonts.poppins(
-                            fontSize: 23,
-                            // fontWeight: FontWeight.bold,
+                            fontSize: size.width * .045,
                             color: Colors.white),
                         children: [
                           TextSpan(
                             text: 'H: ' + high.toString() + '  ',
                             style: GoogleFonts.poppins(
-                              fontSize: 23,
-                              // fontWeight: FontWeight.bold,
+                              fontSize: size.width * .045,
                               color: Colors.green,
                             ),
                           ),
@@ -93,17 +91,18 @@ class StockCard extends StatelessWidget {
                     text: TextSpan(
                       text: "L: " + low.toString() + "  ",
                       style: GoogleFonts.poppins(
-                        fontSize: 23,
-                        // fontWeight: FontWeight.bold,
+                        fontSize: size.width * .045,
                         color: Colors.red,
                       ),
                       children: [
                         TextSpan(
                           text: 'C: ' + close.toString() + "  ",
                           style: GoogleFonts.poppins(
-                            fontSize: 23,
+                            fontSize: size.width * .045,
                             // fontWeight: FontWeight.bold,
-                            color: double.parse(close) > double.parse(open) ? Colors.green : Colors.red,
+                            color: double.parse(close) > double.parse(open)
+                                ? Colors.green
+                                : Colors.red,
                           ),
                         ),
                       ],

@@ -16,11 +16,12 @@ class NewsCreen extends StatelessWidget {
         elevation: 10,
         backgroundColor: Colors.black,
         title: Text(
-          'Wall Street Journal',
+          'NIFTY NEWS',
           style: GoogleFonts.poppins(
             color: Colors.white,
+            letterSpacing: 4,
             fontSize: 30,
-            fontWeight: FontWeight.bold,
+            // fontWeight: FontWeight.bold,
           ),
         ),
       ),
@@ -31,7 +32,8 @@ class NewsCreen extends StatelessWidget {
             List<Article> article = snapshot.data!;
             return ListView.builder(
               itemCount: 100,
-              itemBuilder: (context, index) => customNewsCard(article[index]),
+              itemBuilder: (context, index) =>
+                  customNewsCard(article[index], context),
               //     ListTile(
               //   title: Text(article[index].title.toString()),
               // ),

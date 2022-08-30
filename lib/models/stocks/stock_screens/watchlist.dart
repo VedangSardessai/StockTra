@@ -91,6 +91,16 @@ class _WatchlistState extends State<Watchlist> {
           unformattedLow = chart.chartQuotes!.low.toString(),
           unformattedClose = chart.chartQuotes!.close.toString();
 
+      print(stockNames[i] +
+          ' -> O: ' +
+          unformattedOpen +
+          ' H:' +
+          unformattedHigh +
+          ' L:' +
+          unformattedLow +
+          ' C:' +
+          unformattedClose);
+
       open.add(unformattedOpen.substring(1, unformattedOpen.indexOf('.') + 2));
       high.add(unformattedHigh.substring(1, unformattedHigh.indexOf('.') + 2));
       low.add(unformattedLow.substring(1, unformattedLow.indexOf('.') + 2));
@@ -119,7 +129,8 @@ class _WatchlistState extends State<Watchlist> {
           style: GoogleFonts.poppins(
             color: Colors.white,
             fontSize: 32,
-            fontWeight: FontWeight.bold,
+            letterSpacing: 5
+            // fontWeight: FontWeight.bold,
           ),
         ),
       ),
