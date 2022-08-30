@@ -20,6 +20,7 @@ class _GoogleSignInSuccessState extends State<GoogleSignInSuccess> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     final screens = [
       Watchlist(),
       // Orders(),
@@ -30,9 +31,9 @@ class _GoogleSignInSuccessState extends State<GoogleSignInSuccess> {
     return Scaffold(
       body: screens[currentIdx],
       bottomNavigationBar: BottomNavigationBar(
-        iconSize: 28,
-        selectedFontSize: 17,
-        unselectedFontSize: 14,
+        iconSize: size.width*.04,
+        selectedFontSize: size.width*.03,
+        unselectedFontSize: size.width*.025,
         currentIndex: currentIdx,
         onTap: (index) => setState(() => currentIdx = index),
         type: BottomNavigationBarType.fixed,
@@ -55,7 +56,8 @@ class _GoogleSignInSuccessState extends State<GoogleSignInSuccess> {
           // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.newspaper),
-            label: 'Wall Street Journal',
+            label: 'Nifty News',
+
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
