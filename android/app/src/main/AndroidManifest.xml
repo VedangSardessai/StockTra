@@ -2,7 +2,7 @@
     package="vedangsardessai.for_x.for_x">
     <uses-permission android:name="android.permission.INTERNET"/> <!-- Add this -->
     <application
-        android:label="for_x"
+        android:label="StockTra"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
