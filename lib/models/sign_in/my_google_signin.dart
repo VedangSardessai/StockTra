@@ -61,7 +61,7 @@ class _GoogleSignInTryState extends State<GoogleSignInTry> {
                             isRepeatingAnimation: false,
                             animatedTexts: [
                               TyperAnimatedText(
-                                "Welcome to StockTra an application to check prices of NIFTY 50 stocks and" +
+                                "Welcome to StockTra an application to check prices of NIFTY 50 stocks and " +
                                     "to view articles on NIFTY published by various sources.",
                                 speed: Duration(milliseconds: 80),
                               ),
