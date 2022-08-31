@@ -1,6 +1,9 @@
-# for_x
+# StockTra
 
-A forex simulator that allows to trade mostly in usdinr
+This is an application that is used to view the previous day's open price , 
+high price , low price and the  close price of the Nifty 50 stocks.
+
+This app also shows all the news articles related to NIFTY this is done.
 
 ## Getting Started
 
