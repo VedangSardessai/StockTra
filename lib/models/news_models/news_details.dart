@@ -97,7 +97,7 @@ class _NewsDetailsState extends State<NewsDetails> {
                                   Uri uri =
                                       Uri.parse(widget.article.url.toString());
                                   launchUrl(uri);
-                                  print('Done');
+                                  // print('Done');
                                 },
                               text: 'Read More',
                               style: GoogleFonts.poppins(

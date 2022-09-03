@@ -91,15 +91,15 @@ class _WatchlistState extends State<Watchlist> {
           unformattedLow = chart.chartQuotes!.low.toString(),
           unformattedClose = chart.chartQuotes!.close.toString();
 
-      print(stockNames[i] +
-          ' -> O: ' +
-          unformattedOpen +
-          ' H:' +
-          unformattedHigh +
-          ' L:' +
-          unformattedLow +
-          ' C:' +
-          unformattedClose);
+      // print(stockNames[i] +
+      //     ' -> O: ' +
+      //     unformattedOpen +
+      //     ' H:' +
+      //     unformattedHigh +
+      //     ' L:' +
+      //     unformattedLow +
+      //     ' C:' +
+      //     unformattedClose);
 
       open.add(unformattedOpen.substring(1, unformattedOpen.indexOf('.') + 2));
       high.add(unformattedHigh.substring(1, unformattedHigh.indexOf('.') + 2));
@@ -107,12 +107,12 @@ class _WatchlistState extends State<Watchlist> {
       close.add(
           unformattedClose.substring(1, unformattedClose.indexOf('.') + 2));
     }
-    print(open);
+    // print(open);
 
     setState(
       () {
         i = 1;
-        print('Set State Done');
+        // print('Set State Done');
       },
     );
   }
